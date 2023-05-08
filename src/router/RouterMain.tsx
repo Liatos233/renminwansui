@@ -1,23 +1,24 @@
 import React from "react";
-import { routerConfig } from "./config";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { routerConfig } from "./routerConfig";
 
 const RouterMain: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {routerConfig.map((route, index) => {
+        {routerConfig.map(route => {
           return (
             <Route
-              key={index}
+              key={route.path}
               path={route.path}
-              element={<route.component />}
-            />
+              element={route.element}
+            >
+            </Route>
           )
         })}
       </Routes>
-    </BrowserRouter>
+    </BrowserRouter >
   )
 }
 
-export default RouterMain;
+export default RouterMain; 
