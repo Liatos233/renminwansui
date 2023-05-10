@@ -1,8 +1,8 @@
 import React from 'react';
-import './homeLayout.less';
+import style from './homeLayout.module.less';
 import { Route, Routes } from 'react-router-dom';
 import { routerConfig } from "@/router/routerConfig";
-import NaviBar from '@/components/naviBar/naviBar';
+import NaviBar from '@/components/naviBar/NaviBar';
 
 const HomeLayout: React.FC = () => {
 
@@ -10,9 +10,9 @@ const HomeLayout: React.FC = () => {
   const homeRoutes = routerConfig.find((route) => route.path === '*')?.children || [];
 
   return (
-    <div className='layout'>
+    <div className={style.layout}>
       {/* 内容区域 */}
-      <div className='content'>
+      <div className={style.content}>
         <Routes>
           {homeRoutes.map(route => (
             <Route key={route.path} path={route.path} element={route.element} />
@@ -20,7 +20,7 @@ const HomeLayout: React.FC = () => {
         </Routes>
       </div >
       {/* 导航区域 */}
-      <div className='bar'>
+      <div className={style.bar}>
         <NaviBar />
       </div>
     </div >
