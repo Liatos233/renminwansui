@@ -8,30 +8,22 @@ import CardsBox from '@/components/cardsBox/CardsBox';
 
 const { Search } = Input;
 
-type AssetsDataConfigType = {
-    allBooks: Array<{
-        folderName: string;
-        allCategories: Array<{
-            categoryName: string;
-            books: Array<string>;
-        }>;
-    }>;
-}
-
 const Home: React.FC = () => {
     const [tabItems, setTabItems] = useState<TabsProps['items']>([]);
 
     // 设置所有的tab
-    const setAllTab = (assetsDataConfig: AssetsDataConfigType) => {
+    const setAllTab = () => {
         // 所有的书籍
+        console.log('assetsDataConfig', assetsDataConfig);
         const allBooks = assetsDataConfig.allBooks;
         console.log('allBooks', allBooks);
         const tabItemsNew = allBooks.map((item, index) => {
+            const folderName = item.folderName;
             return {
                 key: index.toString(),
-                label: item.folderName,
+                label: folderName,
                 children: item.allCategories.map((item, index) => {
-                    return <CardsBox key={index} cardsValue={item} />
+                    return <CardsBox key={index} folderName={folderName} cardsValue={item} />
                 })
             }
         });
@@ -41,7 +33,7 @@ const Home: React.FC = () => {
     // 生命周期 - useEffect
     useEffect(() => {
         console.log('assetsDataConfig', assetsDataConfig);
-        setAllTab(assetsDataConfig);
+        setAllTab();
     }, []);
 
     // 搜索

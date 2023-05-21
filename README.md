@@ -4,6 +4,7 @@
    `yarn add antd less less-loader@6`
    > antd v4 采用了 Bidirectional Dependency Management 的方案 不再需要引入 antd.css
    > less-loader 6.x 及以下版本与 less 4.1.3 版本兼容 与 create-react-app 也兼容
+   > yarn add @types/less --save-dev
 3. ### 引入 react-app-rewired 和 customize-cra
    `yarn add react-app-rewired customize-cra`
    > 帮助重写 react 脚手架配置而避免 yarn eject
@@ -17,8 +18,9 @@
    > `yarn add customize-cra-less-loader`
 5. 引入 react-router-dom
    > `yarn add react-router-dom`
-
-<!-- //////////////////////////////////////////////////////////////// -->
+6. 引入 md 相关依赖
+   > `yarn add react-markdown github-markdown-css`
+   <!-- //////////////////////////////////////////////////////////////// -->
 
 # Getting Started with Create React App
 
