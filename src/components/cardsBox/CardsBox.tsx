@@ -43,7 +43,7 @@ const CardsBox: React.FC<CardsBoxProps> = ({ folderName, cardsValue }) => {
             <Card
               className={style.card}
               hoverable
-              title={index + 1}
+              // title={index + 1}
               onClick={() => onCardClick(item)}
             >{item}</Card>
           </List.Item>
