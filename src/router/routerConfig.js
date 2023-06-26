@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 
-import HomeLayout from "@/layout/HomeLayout";
+import BasicLayout from "@/layout/BasicLayout";
 
 import Home from "@/views/home/Home";
 import User from "@/views/user/User";
@@ -9,8 +9,8 @@ import ReadBook from "@/views/readBook/ReadBook";
 
 export const routerConfig = [
   {
-    path: "*",
-    element: <HomeLayout />,
+    path: "/*",
+    element: <BasicLayout />,
     children: [
       {
         path: "",
@@ -32,7 +32,6 @@ export const routerConfig = [
         path: "readBook",
         element: <ReadBook />,
       },
-      // 其他子路由...
       {
         path: "*",
         element: <Navigate to="/" />,

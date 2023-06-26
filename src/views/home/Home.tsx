@@ -5,6 +5,7 @@ import { Divider, Input } from 'antd';
 import assetsDataConfig from '@/assets/assetsDataConfig.json'
 import type { TabsProps } from 'antd';
 import CardsBox from '@/components/cardsBox/CardsBox';
+import NaviBar from '@/components/naviBar/NaviBar';
 
 const { Search } = Input;
 
@@ -46,6 +47,7 @@ const Home: React.FC = () => {
             <Search placeholder="请输入关键字" onSearch={onSearch} enterButton allowClear />
             <Divider style={{ margin: '10px 0' }} />
             <MultiTabs tabItems={tabItems} />
+            <NaviBar />
         </div>
     )
 }

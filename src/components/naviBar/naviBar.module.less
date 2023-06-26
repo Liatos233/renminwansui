@@ -1,0 +1,45 @@
+.naviBar {
+  box-shadow: 0px -1px 10px 0px rgba(0, 0, 0, 0.1);
+  background-color: #fafafa;
+  height: 80px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.rowMain {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .colItem {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    .naviIcon {
+      font-size: 1.5rem;
+      transition: all 0.1s ease;
+    }
+
+    .naviTitle {
+      font-size: 1.2rem;
+      transition: all 1s ease;
+      color: #848484;
+    }
+
+    &:hover .naviTitle {
+      color: #8cbcff;
+    }
+  }
+
+  .colItemActive {
+    .naviTitle {
+      color: #108ee9;
+    }
+  }
+}
