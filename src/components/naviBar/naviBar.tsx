@@ -10,7 +10,7 @@ const NaviBar: React.FC = () => {
 
   const navItems = [
     { key: 'home', icon: <HomeTwoTone />, title: 'Home' },
-    { key: 'user', icon: <BulbTwoTone />, title: 'User' },
+    { key: 'blog', icon: <BulbTwoTone />, title: 'Blog' },
     { key: 'about', icon: <SmileTwoTone />, title: 'About' },
   ];
 

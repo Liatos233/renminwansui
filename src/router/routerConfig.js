@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import BasicLayout from "@/layout/BasicLayout";
 
 import Home from "@/views/home/Home";
-import User from "@/views/user/User";
+import Blog from "@/views/blog/Blog";
 import About from "@/views/about/About";
 import ReadBook from "@/views/readBook/ReadBook";
 
@@ -21,8 +21,8 @@ export const routerConfig = [
         element: <Home />,
       },
       {
-        path: "user",
-        element: <User />,
+        path: "blog",
+        element: <Blog />,
       },
       {
         path: "about",

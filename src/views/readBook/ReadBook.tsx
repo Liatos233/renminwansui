@@ -18,7 +18,7 @@ const ReadBook: React.FC = () => {
         console.log('path', path);
         const response = await fetch(path);
         const text = await response.text();
-        // console.log('text', text);
+        console.log('text', text);
         setMarkdownText(text);
     }
 
@@ -36,7 +36,7 @@ const ReadBook: React.FC = () => {
         // 书名
         const bookName = searchParams.get('bookName');
         // console.log('', folderName, catagoryName, bookName);
-        // 书的路径
+        // 书的路径`/resources/books/
         const path = `/resources/books/${folderName}/${catagoryName}/${bookName}`;
         // 判断文件类型
         console.log('bookName', bookName);
@@ -63,7 +63,7 @@ const ReadBook: React.FC = () => {
                 </div>
             ) : fileType === 'pdf' ? (
                 <div className={style.pdfContainer}>
-                    <PdfReader pdfPath={pdfPath} />
+                    <PdfReader pdfPath={pdfPath} showToolBar={true} />
                 </div>
             ) : (
                 <div>其他文件类型</div>

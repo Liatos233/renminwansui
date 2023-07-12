@@ -18,7 +18,8 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/build/pdf.worker.min.j
 // pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
 type Props = {
-  pdfPath: string
+  pdfPath: string;
+  showToolBar: boolean;
 }
 
 const PdfReader: React.FC<Props> = (props: Props) => {
@@ -106,35 +107,37 @@ const PdfReader: React.FC<Props> = (props: Props) => {
           />
         </Document>
       </div>
-      <div className={style.pageTools}>
-        <Space>
-          <Tooltip title={currentPage === 1 ? "已是第一页" : "上一页"}>
-            <LeftOutlined onClick={previousPage} disabled={currentPage <= 1} />
-          </Tooltip>
-          <Input
-            value={pageNumberFocus ? pageNumberInput : currentPage}
-            onFocus={onPageNumberFocus}
-            onBlur={onPageNumberBlur}
-            onChange={onPageNumberChange}
-            onPressEnter={jumpToPage}
-            type="number"
-          /> / {numPages}
-          <Tooltip title={currentPage === numPages ? "已是最后一页" : "下一页"}>
-            <RightOutlined onClick={nextPage} disabled={currentPage >= numPages} />
-          </Tooltip>
-          <Tooltip title="放大">
-            <PlusCircleOutlined onClick={pageZoomIn} />
-          </Tooltip>
-          <Tooltip title="缩小">
-            <MinusCircleOutlined onClick={pageZoomOut} />
-          </Tooltip>
-          <Tooltip title={fullscreen ? "恢复默认" : '全屏'}>
-            {fullscreen ?
-              <FullscreenExitOutlined onClick={pageFullscreen} /> :
-              <FullscreenOutlined onClick={pageFullscreen} />}
-          </Tooltip>
-        </Space>
-      </div>
+      {props.showToolBar && (
+        <div className={style.pageTools}>
+          <Space>
+            <Tooltip title={currentPage === 1 ? "已是第一页" : "上一页"}>
+              <LeftOutlined onClick={previousPage} disabled={currentPage <= 1} />
+            </Tooltip>
+            <Input
+              value={pageNumberFocus ? pageNumberInput : currentPage}
+              onFocus={onPageNumberFocus}
+              onBlur={onPageNumberBlur}
+              onChange={onPageNumberChange}
+              onPressEnter={jumpToPage}
+              type="number"
+            /> / {numPages}
+            <Tooltip title={currentPage === numPages ? "已是最后一页" : "下一页"}>
+              <RightOutlined onClick={nextPage} disabled={currentPage >= numPages} />
+            </Tooltip>
+            <Tooltip title="放大">
+              <PlusCircleOutlined onClick={pageZoomIn} />
+            </Tooltip>
+            <Tooltip title="缩小">
+              <MinusCircleOutlined onClick={pageZoomOut} />
+            </Tooltip>
+            <Tooltip title={fullscreen ? "恢复默认" : '全屏'}>
+              {fullscreen ?
+                <FullscreenExitOutlined onClick={pageFullscreen} /> :
+                <FullscreenOutlined onClick={pageFullscreen} />}
+            </Tooltip>
+          </Space>
+        </div>
+      )}
     </div>
   )
 }
