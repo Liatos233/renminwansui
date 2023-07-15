@@ -1,4 +1,4 @@
-#### 1、获取两个数组的不同元素
+## 1、获取两个数组的不同元素
 
 ```jsx
 function getDiff(arr1, arr2) {
@@ -8,7 +8,7 @@ function getDiff(arr1, arr2) {
 }
 ```
 
-#### 2、获取两个数组的相同元素
+## 2、获取两个数组的相同元素
 
 ```jsx
 function getSame(arr1, arr2) {

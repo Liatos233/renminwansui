@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-// 引入github-markdown-css
-import 'github-markdown-css';
 import App from './App';
 
 const root = ReactDOM.createRoot(

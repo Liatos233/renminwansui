@@ -13,9 +13,7 @@ import style from './pdfReader.module.less'
 import { Document, Page, pdfjs } from 'react-pdf'
 
 // For React-PDF to work, PDF.js worker needs to be provided
-pdfjs.GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/build/pdf.worker.min.js', import.meta.url,).toString();
-// Or use cdn
-// pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
 type Props = {
   pdfPath: string;
@@ -29,8 +27,10 @@ const PdfReader: React.FC<Props> = (props: Props) => {
   const [pageNumberFocus, setPageNumberFocus] = useState(false);
   const [pageNumberInput, setPageNumberInput] = useState(1);
   const [fullscreen, setFullscreen] = useState(false);
-  const pageOriginWidth = window.screen.width * 0.3;
+  const pageOriginWidth = window.screen.width * 0.4;
+  const pageOriginHeight = window.screen.height - 80;
   const [pageWidth, setPageWidth] = useState(pageOriginWidth);
+  const [pageHeight, setPageHeight] = useState(pageOriginHeight);
 
   function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
     setNumPages(numPages);
@@ -93,14 +93,15 @@ const PdfReader: React.FC<Props> = (props: Props) => {
 
   return (
     <div className={style.layout}>
-      <div className={style.pdfContainer}>
+      <div className={style.pageContainer}>
         <Document
           file={props.pdfPath}
           loading={<Spin size='large' />}
           onLoadSuccess={onDocumentLoadSuccess}>
           <Page
             className={style.pdfPage}
-            width={pageWidth}
+            // width={pageWidth}
+            height={pageHeight}
             pageNumber={currentPage}
             renderAnnotationLayer={false}
             renderTextLayer={false}

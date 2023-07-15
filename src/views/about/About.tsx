@@ -1,14 +1,14 @@
 import React from 'react';
 import style from './about.module.css';
 import NaviBar from '@/components/naviBar/NaviBar';
-import PdfReader from '@/components/pdfReader/PdfReader';
+import MdReader from '@/components/mdReader/mdReader';
 
 const About: React.FC = () => {
-  const pdfPath = '/resources/about/resume.pdf';
+  const mdPath = '/resources/about/resume.md';
   return (
     <div className={style.about}>
-      <div className={style.pdfContainer}>
-        <PdfReader pdfPath={pdfPath} showToolBar={false} />
+      <div className={style.container}>
+        <MdReader mdPath={mdPath} showContent={false} />
       </div>
       <NaviBar />
     </div>

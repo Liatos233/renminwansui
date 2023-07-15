@@ -1,5 +1,9 @@
 import React, { useMemo, useState } from 'react';
 import { Input, Tree } from 'antd';
+import {
+  FolderOpenTwoTone,
+  FileTextTwoTone,
+} from '@ant-design/icons';
 import type { DataNode } from 'antd/es/tree';
 import style from './dicTree.module.less'
 const { Search } = Input;
@@ -131,13 +135,20 @@ const DicTree: React.FC<Props> = (props: Props) => {
           ) : (
             <span>{strTitle}</span>
           );
+        // 如果有子节点 迭代处理
         if (item.children) {
-          return { title, key: item.key, children: loop(item.children) };
+          return {
+            title,
+            key: item.key,
+            icon: <FolderOpenTwoTone />,
+            children: loop(item.children)
+          };
         }
-
+        // 没有则直接返回
         return {
           title,
           key: item.key,
+          icon: <FileTextTwoTone />
         };
       });
 
@@ -152,6 +163,7 @@ const DicTree: React.FC<Props> = (props: Props) => {
     <div className={style.layout}>
       <Search className={style.search} placeholder="Search" onChange={onChange} />
       <Tree
+        showIcon
         className={style.tree}
         expandedKeys={expandedKeys}
         autoExpandParent={autoExpandParent}

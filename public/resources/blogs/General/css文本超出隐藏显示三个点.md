@@ -1,4 +1,4 @@
-一、单行文本
+1. 行文本
 
 ```css
 overflow: hidden;
@@ -6,7 +6,7 @@ text-overflow: ellipsis;
 white-space: nowrap;
 ```
 
-二、多行文本
+2. 多行文本
 
 ```css
 text-overflow: -o-ellipsis-lastline;

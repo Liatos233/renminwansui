@@ -1,4 +1,4 @@
-方法 1：
+## 方法 1：
 
 1. 清除本地 `node`
 2. 安装 `nvm` https://github.com/coreybutler/nvm-windows/releases 下载 nvm-setup.exe 并一路安装
@@ -7,7 +7,7 @@
 5. 使用指定版本 `nvm use 12.17.0`
 6. 查看已经安装的 node 版本 `nvm ls`
 
-方法 2：
+## 方法 2：
 
 1. 安装 node 版本管理模块 n
    `npm install n -g `

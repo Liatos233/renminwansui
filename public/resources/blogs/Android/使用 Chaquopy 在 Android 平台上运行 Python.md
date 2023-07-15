@@ -1,18 +1,18 @@
-# 1 简介
+## 1 简介
 
 Chaquopy 是一个用于在 Android 应用程序中集成 Python 的开源工具。它提供了一个桥接层，将 Python 解释器嵌入到 Android 应用的 Java 代码中，并允许在应用程序中直接运行 Python 代码。
 
-# 2 Chaquopy 的工作原理
+## 2 Chaquopy 的工作原理
 
-## 2.1 集成
+### 2.1 集成
 
 Chaquopy 使用 Gradle 插件来集成到 Android 应用项目中。
 
-## 2.2 构建
+### 2.2 构建
 
 当应用程序被构建时，Chaquopy 将 Python 代码和所需的 Python 解释器打包到 APK 中。这样，应用程序可以在运行时执行 Python 代码。
 
-## 2.3 桥接
+### 2.3 桥接
 
 Chaquopy 提供了一个 Java 和 Python 之间的桥接层，使得在 Java 代码中调用 Python 代码成为可能。
 使用了 JNI（Java Native Interface）来实现 Java 与 Python 之间的桥接。
@@ -24,13 +24,13 @@ https://chaquo.com/chaquopy/doc/current/index.html
 > - Python 解释器执行相应的 Python 代码，并将结果返回给 JNI 接口。
 > - JNI 接口将结果传递回 Java 代码，以便进行进一步处理和使用。
 
-## 2.4 运行时
+### 2.4 运行时
 
 当应用程序在设备上运行时，Chaquopy 在运行时启动 Python 解释器，并通过桥接层将 Java 和 Python 之间的交互传递。这样，Python 代码可以在 Android 应用程序中执行，并与其他组件进行交互。
 
-# 3 配置依赖
+## 3 配置依赖
 
-## 3.1 工程根目录下的 build.gradle
+### 3.1 工程根目录下的 build.gradle
 
 ```java
 buildscript {
@@ -57,7 +57,7 @@ allprojects {
 }
 ```
 
-## 3.2 app 模块下的 build.gradle
+### 3.2 app 模块下的 build.gradle
 
 ```java
 plugins {
@@ -87,11 +87,11 @@ android {
 }
 ```
 
-### 3.3 配置完成后，同步 gradle
+#### 3.3 配置完成后，同步 gradle
 
-# 4 编写代码
+## 4 编写代码
 
-## 4.1 在 app/src/main/python 目录下编写 python 代码
+### 4.1 在 app/src/main/python 目录下编写 python 代码
 
 ```python hello.py
 from java import jclass
@@ -114,11 +114,11 @@ def get_list(a,b,c,d):
 def print_list(data):
   print(type(data))
 
-# 遍历Java的ArrayList对象
+//遍历Java的ArrayList对象
 for i in range(data.size()):
   print(data.get(i))
 
-# python 调用 Java 类
+//python 调用 Java 类
 def get_java_bean():
   JavaBean = jclass("org.hello.JavaBean")
   jb = JavaBean("python")
@@ -128,7 +128,7 @@ def get_java_bean():
   return jb
 ```
 
-## 4.2 Java 代码 调用 Python
+### 4.2 Java 代码 调用 Python
 
 ```java
 package org.hello;
@@ -207,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-## 4.2 Java 代码 Python 返调 Java 类
+### 4.3 Java 代码 Python 返调 Java 类
 
 ```java
 package org.hello;

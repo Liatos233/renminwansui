@@ -26,7 +26,7 @@ const Blog: React.FC = () => {
       </div>
       <div className={style.divider} />
       <div className={style.content}>
-        {mdPath && <MdReader mdPath={mdPath} />}
+        {mdPath && <MdReader mdPath={mdPath} showContent={true} />}
       </div>
       <NaviBar />
     </div>
