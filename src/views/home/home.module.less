@@ -1,4 +1,81 @@
+@dotDefaultColor: #848484;
+@dotHoverColor: #8cbcff;
+@dotActiveColor: #108ee9;
+
 .layout {
-  padding: 20px;
+
+  width: 100%;
   height: 100%;
+
+  .bgContent {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 80px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    // 定义在滚动容器中的一个临时点（snap point）如何被严格的执行
+    scroll-snap-type: y mandatory;
+
+    .backgrounds {
+
+      height: 100%;
+      // 控制将要聚焦的当前滚动子元素在滚动方向上相对于父容器的对齐方式
+      scroll-snap-align: start;
+
+      .background {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .bgNavBar {
+    width: 30px;
+    padding: 10px;
+    position: fixed;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    // 为背景元素设置模糊或颜色偏移效果
+    backdrop-filter: blur(10px);
+    transition: all .6s ease;
+    opacity: .5;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    .dot {
+      display: block;
+      margin: 6px auto;
+      width: 8px;
+      height: 8px;
+      background: @dotDefaultColor;
+      border-radius: 50%;
+      transition: all .4s ease;
+      cursor: pointer;
+
+      &:hover {
+        background: @dotHoverColor;
+      }
+    }
+
+    .dotActive {
+      transform: scale(200%);
+      background: @dotActiveColor;
+      ;
+    }
+  }
 }

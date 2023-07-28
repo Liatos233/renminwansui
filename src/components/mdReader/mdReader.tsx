@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Drawer } from 'antd';
+import { Drawer } from 'antd';
+import { MenuUnfoldOutlined } from '@ant-design/icons';
 import ReactMarkdown from 'react-markdown';
 // 划线、表、任务列表和直接url等的语法扩展
 import remarkGfm from 'remark-gfm';
@@ -51,10 +52,16 @@ const MdReader: React.FC<Props> = (props: Props) => {
     <div className={style.layout}>
       {props.showContent ?
         <div>
-          <div style={{ position: "absolute", right: 0 }}>
-            <Button type="primary" onClick={showDrawer}>目录</Button>
+          <div style={{ position: "absolute", top: 0, right: 0, backgroundColor: "#fff" }}>
+            <MenuUnfoldOutlined onClick={showDrawer} />
           </div>
-          <Drawer title="Content" placement="right" onClose={onClose} open={contentDrawerOpen}>
+          <Drawer
+            title="Content"
+            placement="right"
+            onClose={onClose}
+            open={contentDrawerOpen}
+            getContainer={false}
+          >
             <MarkNav
               className="article"
               source={markdownText}

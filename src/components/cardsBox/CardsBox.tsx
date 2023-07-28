@@ -1,4 +1,5 @@
-import { Card, List } from 'antd';
+import { Card } from 'antd';
+// import { List } from 'antd';
 import style from './cardsBox.module.less';
 import { useNavigate } from 'react-router-dom';
 
@@ -23,9 +24,21 @@ const CardsBox: React.FC<CardsBoxProps> = ({ folderName, cardsValue }) => {
   }
 
   return (
-    <div>
+    <div className={style.cardsBoxLayout}>
       <h3>{cardsValue.categoryName}</h3>
-      <List
+      <div className={style.cards}>
+        {
+          cardsValue.books.map((item, index) => {
+            return (
+              <div key={index} className={style.card}>
+                <Card hoverable className={style.cardIn} onClick={() => onCardClick(item)}>{item}</Card>
+              </div>
+            )
+          })
+        }
+      </div>
+
+      {/* <List
         grid={{
           gutter: 16,
           xs: 2,
@@ -43,12 +56,11 @@ const CardsBox: React.FC<CardsBoxProps> = ({ folderName, cardsValue }) => {
             <Card
               className={style.card}
               hoverable
-              // title={index + 1}
               onClick={() => onCardClick(item)}
             >{item}</Card>
           </List.Item>
         )}
-      />
+      /> */}
     </div>
   )
 }

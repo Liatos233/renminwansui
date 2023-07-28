@@ -1,8 +1,0 @@
-.about {
-  height: calc(100% - 80px);
-  overflow: scroll;
-  .container {
-    height: 100%;
-    padding: 20px;
-  }
-}

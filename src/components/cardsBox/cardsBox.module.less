@@ -1,3 +1,20 @@
-.card {
-  height: 100px;
+.cardsBoxLayout {
+  .cards {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    &::-webkit-scrollbar {
+      // display: none;
+    }
+
+    .card {
+      margin: 10px;
+
+      .cardIn {
+        width: 150px;
+        height: 200px;
+      }
+    }
+  }
 }

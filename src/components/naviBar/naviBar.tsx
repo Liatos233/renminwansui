@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Row, Space } from 'antd';
-import { HomeTwoTone, BulbTwoTone, SmileTwoTone } from '@ant-design/icons';
+import { HomeOutlined, ReadOutlined, BulbOutlined, SmileOutlined } from '@ant-design/icons';
 import { useNavigate, useLocation } from 'react-router-dom';
 import style from './naviBar.module.less';
 
@@ -9,26 +9,32 @@ const NaviBar: React.FC = () => {
   const location = useLocation();
 
   const navItems = [
-    { key: 'home', icon: <HomeTwoTone />, title: 'Home' },
-    { key: 'blog', icon: <BulbTwoTone />, title: 'Blog' },
-    { key: 'about', icon: <SmileTwoTone />, title: 'About' },
+    { key: 'home', icon: <HomeOutlined />, title: 'Home' },
+    { key: 'read', icon: <ReadOutlined />, title: 'Read' },
+    { key: 'blog', icon: <BulbOutlined />, title: 'Blog' },
+    { key: 'about', icon: <SmileOutlined />, title: 'About' },
   ];
 
   // 用于高亮导航栏
-  const [active, setActive] = useState('');
+  const [active, setActive] = useState('home');
 
-  // 在组件挂载时，根据当前路由设置active
-  React.useEffect(() => {
-    const path = location.pathname.slice(1); // 去除路径前面的斜杠"/"
-    setActive(path);
-  }, [location]);
 
   // 点击导航栏时，改变active的值
   const onClickNavi = (e: string) => {
     setActive(e);
-    console.log('active', active);
+    // console.log('active', active);
     navigate(`/${e}`);
   }
+
+  // 在组件挂载时，根据当前路由设置active
+  useEffect(() => {
+    const path = location.pathname.slice(1); // 去除路径前面的斜杠"/"
+    if (path === '') {
+      setActive('home');
+    } else {
+      setActive(path);
+    }
+  }, [location]);
 
   return (
     <div className={style.naviBar}>
@@ -37,14 +43,13 @@ const NaviBar: React.FC = () => {
           <Col
             key={item.key}
             className={`${style.colItem} ${active === item.key ? style.colItemActive : ''}`}
-            span={8}
+            span={6}
             onClick={() => onClickNavi(item.key)}
           >
             <Space direction='vertical' className='spaceBox'>
               <Row justify='center'>
                 {React.cloneElement(item.icon, {
                   className: style.naviIcon,
-                  twoToneColor: active === item.key ? '' : '#848484',
                 })}
               </Row>
               <Row>

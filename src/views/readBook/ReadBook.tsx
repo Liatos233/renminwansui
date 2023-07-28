@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import style from './readBook.module.less'
 import { useSearchParams, useLocation } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown';
 import PdfReader from '@/components/pdfReader/PdfReader';
+import MdReader from '@/components/mdReader/mdReader';
 
 const ReadBook: React.FC = () => {
 
     const [searchParams] = useSearchParams();
-    const [markdownText, setMarkdownText] = useState('');
+    const [mdPath, setMdPath] = useState('');
     const stateParams = useLocation()
     const [fileType, setFileType] = useState('');
     const [pdfPath, setPdfPath] = useState('');
@@ -16,10 +16,7 @@ const ReadBook: React.FC = () => {
     // 读取markdown内容
     async function fetchMarkdown(path: string) {
         console.log('path', path);
-        const response = await fetch(path);
-        const text = await response.text();
-        console.log('text', text);
-        setMarkdownText(text);
+        setMdPath(path);
     }
 
     // 读取pdf内容
@@ -36,8 +33,8 @@ const ReadBook: React.FC = () => {
         // 书名
         const bookName = searchParams.get('bookName');
         // console.log('', folderName, catagoryName, bookName);
-        // 书的路径`/resources/books/
-        const path = `/resources/books/${folderName}/${catagoryName}/${bookName}`;
+        // 书的路径
+        const path = require(`@/assets/books/${folderName}/${catagoryName}/${bookName}`);
         // 判断文件类型
         console.log('bookName', bookName);
         const fileTypeExtension = bookName?.split('.').pop() || '';
@@ -59,7 +56,7 @@ const ReadBook: React.FC = () => {
         <div className={style.layout}>
             {fileType === 'md' ? (
                 <div className={style.mdContainer}>
-                    <ReactMarkdown>{markdownText}</ReactMarkdown>
+                    <MdReader mdPath={mdPath} showContent={true} />
                 </div>
             ) : fileType === 'pdf' ? (
                 <div className={style.pdfContainer}>

@@ -1,45 +1,57 @@
 .naviBar {
-  box-shadow: 0px -1px 10px 0px rgba(0, 0, 0, 0.1);
+  // 水平偏移量 垂直偏移量 模糊半径 扩展半径
+  box-shadow: 0px -3px 10px 0px rgba(0, 0, 0, 0.1);
   background-color: #fafafa;
   height: 80px;
   width: 100%;
   position: fixed;
   bottom: 0;
   left: 0;
-}
+  z-index: 10;
+  background-image: linear-gradient(to bottom, #efefef, #ffffff);
 
-.rowMain {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
-  .colItem {
+  .rowMain {
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
 
-    .naviIcon {
-      font-size: 1.5rem;
-      transition: all 0.1s ease;
+    .colItem {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.5s ease;
+
+      .naviIcon {
+        font-size: 1.5rem;
+      }
+
+      .naviTitle {
+        font-size: 1.2rem;
+        color: #848484;
+        transition: all 0.5s ease;
+      }
+
+      &:hover {
+        color: #8cbcff;
+      }
+
+      &:hover .naviTitle {
+        color: #8cbcff;
+      }
     }
 
-    .naviTitle {
-      font-size: 1.2rem;
-      transition: all 1s ease;
-      color: #848484;
-    }
+    .colItemActive {
+      .naviTitle {
+        color: #108ee9;
+      }
 
-    &:hover .naviTitle {
-      color: #8cbcff;
-    }
-  }
-
-  .colItemActive {
-    .naviTitle {
-      color: #108ee9;
+      .naviIcon {
+        color: #108ee9;
+      }
     }
   }
 }
