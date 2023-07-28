@@ -6,7 +6,7 @@
         <div id="info" style="display: flex; justify-content: center;">
             <div>
               <a class="telephone" href="#" style="margin:1em">15228791209</a>
-              <a class="mail"href="#" style="margin:1em">630151911 @qq.com</a>
+              <a class="mail"href="#" style="margin:1em">630151911@qq.com</a>
             </div>
             <div>
               <a class="school" href="#" style="margin:1em">电子科技大学</a>
@@ -43,7 +43,7 @@
 
 ## 知识技能
 
-- 熟悉 React 生态，包括 React Hooks/React Router/Redux/JSX/Antd 等，并参与商业化项目开发
+- 熟悉 React 生态，包括 React Hooks/React Router/Redux/JSX/Antd 等
 - 了解 Vue3/TypeScript 等前沿技术栈
 - 了解 Webpack/Nodejs/ESlint/Git 等工程化技术
 - 了解 Echarts/AntV 等可视化工具
@@ -63,7 +63,12 @@
 - 该系统建立了面向金沙江巨型电站群外来入侵植物的统一植物信息管理网站，提供良好的信息录入管理工作流程，并通过接入 API 进行物种图像识别鉴定。
 - 前端采用 React ＋ Antd+Echarts+Sass 等构建开发
 
-### `2023.01 ~ 2023.06` **实用医院临床杂志投审稿系统** 组员
+### `2021.01 ~ 2021.11` 航空发动机进气总温修正边缘计算软硬件系统 商业化项目 组长
+
+- 负责 Tensorflow.js 机器学习模型构建，Python 数据清洗、基于 Webview 的原生 H5 前端开发和管理员后台开发。
+- 该系统旨在边缘计算设备上训练和运行机器学习模型用于发动机实时总温分析和修正，并同时搭建实时软硬件集成系统。
+
+### `2021.08 ~ 2021.12` **实用医院临床杂志投审稿系统** 组员
 
 - 负责投稿流程优化、管理模块升级、主页增量开发等工作，组织软件维护和 Bug 修复工作。
 - 该系统是一个适用于实用医院临床杂志的投稿审稿一体化平台网站，为投稿人提供投稿、改稿、缴费等功能，为编辑提供稿件初审、稿件转交、格式审查、缴费审核等功能，为审稿人提供审稿功能，并提供平台管理功能。

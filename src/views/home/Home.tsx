@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import style from './home.module.less';
 import assetsDataConfig from '@/assets/assetsDataConfig.json'
 import NaviBar from '@/components/naviBar/NaviBar';
-import SolarSystem from '@/components/plants/SolarSystem';
+// import SolarSystem from '@/components/plants/SolarSystem';
 
 const Home: React.FC = () => {
     const [images, setImages] = useState<string[]>([]);
