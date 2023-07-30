@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Row, Space } from 'antd';
-import { HomeOutlined, ReadOutlined, BulbOutlined, SmileOutlined } from '@ant-design/icons';
+import { HomeOutlined, ReadOutlined, RocketOutlined, BulbOutlined, SmileOutlined } from '@ant-design/icons';
 import { useNavigate, useLocation } from 'react-router-dom';
 import style from './naviBar.module.less';
 
@@ -11,6 +11,7 @@ const NaviBar: React.FC = () => {
   const navItems = [
     { key: 'home', icon: <HomeOutlined />, title: 'Home' },
     { key: 'read', icon: <ReadOutlined />, title: 'Read' },
+    { key: 'vision', icon: <RocketOutlined />, title: 'Vision' },
     { key: 'blog', icon: <BulbOutlined />, title: 'Blog' },
     { key: 'about', icon: <SmileOutlined />, title: 'About' },
   ];
@@ -43,7 +44,7 @@ const NaviBar: React.FC = () => {
           <Col
             key={item.key}
             className={`${style.colItem} ${active === item.key ? style.colItemActive : ''}`}
-            span={6}
+            span={4}
             onClick={() => onClickNavi(item.key)}
           >
             <Space direction='vertical' className='spaceBox'>

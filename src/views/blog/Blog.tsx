@@ -5,7 +5,6 @@ import DicTree from '@/components/dicTree/DicTree';
 import MdReader from '@/components/mdReader/mdReader';
 import style from './blog.module.less';
 import assetsDataConfig from '@/assets/assetsDataConfig.json'
-import Plants from '@/components/plants/Plants';
 
 const Blog: React.FC = () => {
 
@@ -36,9 +35,12 @@ const Blog: React.FC = () => {
       </div>
       <div className={style.content}>
         {mdPath ?
-          <MdReader mdPath={mdPath} showContent={true} /> :
+          <div className={style.mdContent}>
+            <MdReader mdPath={mdPath} showContent={true} />
+          </div>
+          :
           <div className={style.blankContent}>
-            <Plants />
+            <div className={style.word}>Talk is cheap. Show me the code.</div>
           </div>}
       </div>
       <NaviBar />

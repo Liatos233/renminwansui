@@ -10,6 +10,7 @@ import ReadBook from "@/views/readBook/ReadBook";
 import Vision from "@/views/vision/Vision";
 import VisionHome from "./../views/vision/visionHome/VisionHome";
 import SolarSystem from "@/components/plants/SolarSystem";
+import Plants from "@/components/plants/Plants";
 
 export const routerConfig = [
   {
@@ -39,6 +40,10 @@ export const routerConfig = [
           {
             path: "",
             element: <VisionHome />,
+          },
+          {
+            path: "plants",
+            element: <Plants />,
           },
           {
             path: "solarSystem",

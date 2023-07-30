@@ -19,6 +19,7 @@
     background-color: #ffffff;
     border-right: #e6e6e6 solid 1px;
     transition: width 0.3s ease-out;
+    z-index: 10;
   }
 
   .dicTreeCollapsed {
@@ -57,6 +58,9 @@
     flex: 1;
     overflow-x: hidden;
     overflow-y: auto;
+  }
+
+  .mdContent {
     padding: 0 0 0 10px;
   }
 
@@ -66,5 +70,47 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+
+    .word {
+      position: relative;
+      display: inline-block;
+      /* 确保 div 只占据文字的宽度 */
+      overflow: hidden;
+      width: 0;
+      font-size: 32px;
+      line-height: 34px;
+      font-family: "Courier New", Courier, monospace;
+      white-space: nowrap;
+      text-align: center;
+      /* 调整 steps 的值来匹配文字的长度 */
+      animation: typing 3s steps(28) forwards;
+
+      &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        height: 32px;
+        border-right: 2px solid #000;
+        /* 添加延迟在打字动画完成后再开始 */
+        animation: blink 0.5s 3s infinite;
+      }
+    }
+
+    @keyframes typing {
+      0% {
+        width: 0;
+      }
+
+      100% {
+        width: 100%;
+      }
+    }
+
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
   }
 }
