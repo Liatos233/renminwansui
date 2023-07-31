@@ -6,7 +6,7 @@
         <div id="info" style="display: flex; justify-content: center;">
             <div>
               <a class="telephone" href="#" style="margin:1em">15228791209</a>
-              <a class="mail"href="#" style="margin:1em">630151911@qq.com</a>
+              <a class="mail" href="mailto:630151911@qq.com" style="margin:1em">630151911@qq.com</a>
             </div>
             <div>
               <a class="school" href="#" style="margin:1em">电子科技大学</a>

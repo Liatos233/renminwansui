@@ -2,6 +2,8 @@
 
 ## Introduction
 
+- 一个从零开始的个人网站
+
 ![主页](https://imgur.com/Zp7zJOO.jpg)
 
 - [Pages](https://liatos233.github.io/)
