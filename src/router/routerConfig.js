@@ -11,6 +11,7 @@ import Vision from "@/views/vision/Vision";
 import VisionHome from "./../views/vision/visionHome/VisionHome";
 import SolarSystem from "@/components/plants/SolarSystem";
 import Plants from "@/components/plants/Plants";
+import Window from "@/views/window/Window";
 
 export const routerConfig = [
   {
@@ -58,6 +59,10 @@ export const routerConfig = [
       {
         path: "readBook",
         element: <ReadBook />,
+      },
+      {
+        path: "window",
+        element: <Window />,
       },
       {
         path: "*",

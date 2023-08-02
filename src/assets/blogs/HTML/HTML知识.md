@@ -41,21 +41,11 @@
 <h2><a id="C4">章节 4</a></h2>
 ```
 
-#### 8 Css 样式优先级
-
-1. !important 优先级最高，无论其位置在哪里
-2. 行内样式（Inline styles）：即直接在 HTML 元素的 style 属性中定义的样式。
-3. 内联样式（Embedded styles）：即在 HTML 中使用 `<style>` 标签定义的样式，通常位于 `<head>` 部分
-4. 外部样式表（External stylesheets）：单独的 .css 文件中定义的样式
-
-- 最后定义的样式将覆盖先前的样式
-- 继承的样式优先级低于前述规则
-
-#### 9 图像
+#### 8 图像
 
 - 可以使用 `<map>` 和 `<area>` 定义图像地图和可点击区域
 
-#### 10 字符实体
+#### 9 字符实体
 
 ```html
 &entity_name;
@@ -65,7 +55,7 @@
 &nbsp;
 ```
 
-#### 11 Cookie
+#### 10 Cookie
 
 - 由服务器发送给浏览器的一个小型文本文件
 - 浏览器在随后的请求中会将该文件作为头信息附加到服务器发送的请求中。
@@ -83,7 +73,7 @@ console.log(cookies);
 document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
 ```
 
-#### 12 HTML5
+#### 11 HTML5
 
 ##### canvas
 
