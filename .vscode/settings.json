@@ -1,0 +1,12 @@
+{
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    // Append as many as you want
+    // The keys are the parents and the values are the nested files. 
+    "package.json": "*.gitignore, *.lock, *.js, , *.json, ",
+  },
+  "files.exclude": {
+    "node_modules/": true,
+  }
+}

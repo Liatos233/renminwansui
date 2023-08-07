@@ -16,7 +16,7 @@ const Home: React.FC = () => {
             const fullPath = require(`@/assets/images/${assetsDataConfig.allImages[0].title}/${item.title}`);
             return fullPath;
         });
-        // console.log('allImages', allImages);
+        console.log('allImages', allImages);
         setImages(allImages);
     }
 
