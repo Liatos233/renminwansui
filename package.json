@@ -24,6 +24,7 @@
     "antd": "^5.4.6",
     "customize-cra": "^1.0.0",
     "customize-cra-less-loader": "^2.0.0",
+    "github-markdown-css": "^5.2.0",
     "less": "^4.1.3",
     "less-loader": "6",
     "markdown-navbar": "^1.4.3",

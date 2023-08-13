@@ -480,8 +480,7 @@ const SolarSystem: React.FC = () => {
       return;
     }
     //判断是否是行星
-    //@ts-ignore
-    if (intersects[0].object.isPlanet) {
+    if ((intersects[0].object as any).isPlanet) {
       clickPlanet = intersects[0].object;
     } else {
       clickPlanet = intersects[0].object.parent;
@@ -560,8 +559,7 @@ const SolarSystem: React.FC = () => {
   const sphereRotation = (data: PlanetData[]) => {
     scene.children.forEach((e) => {
       //过滤出星球
-      //@ts-ignore
-      if (e.isPlanet) {
+      if ((e as any).isPlanet) {
         let planetData = data.filter((d) =>
           d.name === e.name)[0];
         if (e.name === "土星") {
@@ -586,23 +584,18 @@ const SolarSystem: React.FC = () => {
 
   //球体公转
   const sphereRevolution = (data: PlanetData[]) => {
-    scene.children.forEach((e) => {
+    scene.children.forEach((el) => {
       //过滤出星球
-      //@ts-ignore
+      let e = el as any;
       if (e.isPlanet) {
         let planetData = data.filter((d) => d.name === e.name)[0]; //获取球体数据
-        //@ts-ignore
         e.angle =
-          //@ts-ignore
           e.angle + planetData.revolution >= 2 * Math.PI
             ? 0
-            //@ts-ignore
             : e.angle + planetData.revolution;
         e.position.set(
-          //@ts-ignore
           planetData.position[0] * Math.sin(e.angle),
           0,
-          //@ts-ignore
           planetData.position[0] * Math.cos(e.angle)
         );
       }
@@ -629,7 +622,7 @@ const SolarSystem: React.FC = () => {
     return () => {
       destroyScene();
     }
-  }, []);
+  });
 
   return (
     <div className={style.layout}>

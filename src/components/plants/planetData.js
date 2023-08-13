@@ -2,36 +2,26 @@ import sunImg from "./solarSystemImage/sun.jpg"; //太阳
 import mercuryImg from "./solarSystemImage/mercury.jpg"; //水星
 import venusImg from "./solarSystemImage/venus.jpg"; //金星
 import earthImg from "./solarSystemImage/earth.jpg"; //地球
-import moonImg from "./solarSystemImage/moon.jpg"; //月球
 import marsImg from "./solarSystemImage/mars.jpg"; //火星
 import jupiterImg from "./solarSystemImage/jupiter.jpg"; //木星
 import saturnImg from "./solarSystemImage/saturn.jpg"; //土星
 import uranusImg from "./solarSystemImage/uranus.jpg"; //天王星
 import neptuneImg from "./solarSystemImage/neptune.jpg"; //海王星
-
-const solarSyetemstatistics = {
-  sun: [696000, 0],
-  mercury: [2439.7, 57910000],
-  venus: [6051.8, 108210000],
-  earth: [6371, 149600000],
-  moon: [1738, 384400000],
-  mars: [3389.5, 227920000],
-  jupiter: [69911, 778570000],
-  saturn: [58232, 1433530000],
-  uranus: [25362, 2872460000],
-  neptune: [24622, 4495060000],
-};
-
-const sSModelSize = Object.fromEntries(
-  Object.entries(solarSyetemstatistics).map(([planet, [radius, distance]]) => [
-    planet,
-    [radius / 5000000, distance / 5000000],
-  ])
-);
+import plutoImg from "./solarSystemImage/pluto.jpg"; //冥王星
+let sunSize = 200,
+  mercurySize = 30,
+  venusSize = 45,
+  earthSize = 50,
+  marsSize = 45,
+  jupiterSize = 90,
+  saturnSize = 80,
+  uranusSize = 70,
+  neptuneSize = 65,
+  plutoSize = 40;
 let sun = {
   name: "太阳", //球体名称
   mapImg: sunImg, //球体贴图
-  size: sSModelSize.sun[0], //球体尺寸
+  size: sunSize, //球体尺寸
   position: [0, 0, 0], //位置(x，y，z)
   rotation: 0.05, //自转速度
   revolution: 0, //公转速度
@@ -49,12 +39,8 @@ let sun = {
 let mercury = {
   name: "水星",
   mapImg: mercuryImg,
-  size: sSModelSize.mercury[0],
-  position: [
-    sSModelSize.sun[0] + sSModelSize.mercury[0] + sSModelSize.mercury[1],
-    0,
-    0,
-  ],
+  size: mercurySize,
+  position: [sunSize + mercurySize + 25, 0, 0],
   rotation: 0.001,
   revolution: 0.02,
   data: {
@@ -71,12 +57,8 @@ let mercury = {
 let venus = {
   name: "金星",
   mapImg: venusImg,
-  size: sSModelSize.venus[0],
-  position: [
-    sSModelSize.sun[0] + sSModelSize.venus[0] + sSModelSize.venus[1],
-    0,
-    0,
-  ],
+  size: venusSize,
+  position: [mercury.position[0] + mercurySize + venusSize + 25, 0, 0],
   rotation: 0.00025,
   revolution: -0.016, //金星公转方向特殊
   data: {
@@ -93,12 +75,8 @@ let venus = {
 let earth = {
   name: "地球",
   mapImg: earthImg,
-  size: sSModelSize.earth[0],
-  position: [
-    sSModelSize.sun[0] + sSModelSize.earth[0] + sSModelSize.earth[1],
-    0,
-    0,
-  ],
+  size: earthSize,
+  position: [venus.position[0] + venusSize + earthSize + 100, 0, 0],
   rotation: 0.05,
   revolution: 0.01,
   data: {
@@ -112,28 +90,11 @@ let earth = {
     msg: "地球是九大行星中唯一适宜生命生存和繁衍的地方。71%的地球表面为水所覆盖。地球是行星中唯一一颗能在表面存在有液态水（虽然在土卫六的表面存在有液态乙烷与甲烷，木卫二的地下有液态水）。地球的大气由77%的氮，21%氧，微量的氩、二氧化碳和水组成。地球初步形成时，大气中可能存在大量的二氧化碳，但是几乎都被组合成了碳酸盐岩石，少部分溶入了海洋或给活着的植物消耗了。",
   },
 };
-let moon = {
-  name: "月球",
-  mapImg: moonImg,
-  size: sSModelSize.moon[0],
-  position: [
-    sSModelSize.earth[0] + sSModelSize.moon[0] + sSModelSize.moon[1],
-    0,
-    0,
-  ],
-  rotation: 0.001,
-  revolution: 0.02,
-  data: {},
-};
 let mars = {
   name: "火星",
   mapImg: marsImg,
-  size: sSModelSize.mars[0],
-  position: [
-    sSModelSize.sun[0] + sSModelSize.mars[0] + sSModelSize.mars[1],
-    0,
-    0,
-  ],
+  size: marsSize,
+  position: [earth.position[0] + earthSize + marsSize + 100, 0, 0],
   rotation: 0.05,
   revolution: 0.005,
   data: {
@@ -150,12 +111,8 @@ let mars = {
 let jupiter = {
   name: "木星",
   mapImg: jupiterImg,
-  size: sSModelSize.jupiter[0],
-  position: [
-    sSModelSize.sun[0] + sSModelSize.jupiter[0] + sSModelSize.jupiter[1],
-    0,
-    0,
-  ],
+  size: jupiterSize,
+  position: [mars.position[0] + marsSize + jupiterSize + 25, 0, 0],
   rotation: 0.14,
   revolution: 0.003,
   data: {
@@ -172,12 +129,8 @@ let jupiter = {
 let saturn = {
   name: "土星",
   mapImg: saturnImg,
-  size: sSModelSize.saturn[0],
-  position: [
-    sSModelSize.sun[0] + sSModelSize.saturn[0] + sSModelSize.saturn[1],
-    0,
-    0,
-  ],
+  size: saturnSize,
+  position: [jupiter.position[0] + jupiterSize + saturnSize + 80, 0, 0],
   rotation: 0.13,
   revolution: 0.0015,
   data: {
@@ -194,12 +147,8 @@ let saturn = {
 let uranus = {
   name: "天王星",
   mapImg: uranusImg,
-  size: sSModelSize.uranus[0],
-  position: [
-    sSModelSize.sun[0] + sSModelSize.uranus[0] + sSModelSize.uranus[1],
-    0,
-    0,
-  ],
+  size: uranusSize,
+  position: [saturn.position[0] + saturnSize + uranusSize + 80, 0, 0],
   rotation: 0.11,
   revolution: 0.0012,
   data: {
@@ -216,12 +165,8 @@ let uranus = {
 let neptune = {
   name: "海王星",
   mapImg: neptuneImg,
-  size: sSModelSize.neptune[0],
-  position: [
-    sSModelSize.sun[0] + sSModelSize.neptune[0] + sSModelSize.neptune[1],
-    0,
-    0,
-  ],
+  size: neptuneSize,
+  position: [uranus.position[0] + uranusSize + neptuneSize + 25, 0, 0],
   rotation: 0.12,
   revolution: 0.0011,
   data: {
@@ -235,17 +180,34 @@ let neptune = {
     msg: "海王星的组成成份与天王星的很相似：各种各样的“冰”和含有15%的氢和少量氦的岩石。海王星相似于天王星但不同于土星和木星，它或许有明显的内部地质分层，但在组成成份上有着或多或少的一致性。但海王星很有可能拥有一个岩石质的小型地核（质量与地球相仿）。它的大气多半由氢气和氦气组成。还有少量的甲烷。海王星的蓝色是大气中甲烷吸收了日光中的红光造成的。",
   },
 };
-
+let pluto = {
+  name: "冥王星",
+  mapImg: plutoImg,
+  size: plutoSize,
+  position: [neptune.position[0] + neptuneSize + plutoSize + 25, 0, 0],
+  rotation: 0.11,
+  revolution: 0.001,
+  data: {
+    sunDistance: "59.13亿km",
+    weight: "1.27e22kg",
+    diameter: "2274km",
+    rotation: "6.387day",
+    revolution: "1248year",
+    temp: "-240℃",
+    atmosphere: "甲烷、氮气",
+    msg: "在2006年举行的国际天文学联合会第26届大会上，冥王星被正式从太阳系九大行星之列中除名，并被归入矮行星之列。从那时起，冥王星便被认为是柯伊伯小行星带中最大的天体之一。冥王星是九大行星中体积最小的一个，而且比那八颗行星要小得多。冥王星直径仅为2300公里左右，比地球的卫星还小。它的轨道也非常特别，与其它八颗行星运转的轨道有一个角度。",
+  },
+};
 let planetList = [
   sun,
   mercury,
   venus,
   earth,
-  moon,
   mars,
   jupiter,
   saturn,
   uranus,
   neptune,
+  pluto,
 ];
 export default planetList;

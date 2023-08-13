@@ -6,6 +6,8 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 // 解析标签，支持html语法
 import rehypeRaw from 'rehype-raw';
+// 引入内容样式
+import 'github-markdown-css';
 // 代码高亮
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 // 代码高亮主题风格
@@ -14,6 +16,8 @@ import { darcula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import MarkNav from 'markdown-navbar';
 import './markNav.css'
 import style from './mdReader.module.less'
+
+// TODO 目录添加anchor https://blog.csdn.net/Sakuraaaa_/article/details/128400497
 
 type Props = {
   mdPath: string;
