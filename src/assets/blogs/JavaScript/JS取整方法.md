@@ -6,15 +6,15 @@ const roundedNum = Math.round(num);
 console.log(roundedNum); // 8
 ```
 
-2. Math.floor(): 向上取整
+2. Math.ceil(): 向上取整
 
 ```js
 const num = 7.8;
-const flooredNum = Math.floor(num);
-console.log(flooredNum); // 7
+const ceiledNum = Math.ceil(num);
+console.log(ceiledNum); // 8
 ```
 
-3. Math.ceil(): 向下取整
+3. Math.floor(): 向下取整
 
 ```js
 const num = 7.8;
