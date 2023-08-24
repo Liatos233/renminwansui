@@ -16,7 +16,7 @@ import { Document, Page, pdfjs } from 'react-pdf'
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
 type Props = {
-  pdfPath: string;
+  filePath: string;
   showToolBar: boolean;
 }
 
@@ -95,7 +95,7 @@ const PdfReader: React.FC<Props> = (props: Props) => {
     <div className={style.layout}>
       <div className={style.pageContainer}>
         <Document
-          file={props.pdfPath}
+          file={props.filePath}
           loading={<Spin size='large' />}
           onLoadSuccess={onDocumentLoadSuccess}>
           <Page

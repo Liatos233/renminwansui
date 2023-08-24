@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons';
 import NaviBar from '@/components/naviBar/NaviBar';
 import DicTree from '@/components/dicTree/DicTree';
-import MdReader from '@/components/mdReader/mdReader';
+import MdReader from '@/components/mdReader/MdReader';
 import style from './blog.module.less';
 import assetsDataConfig from '@/assets/assetsDataConfig.json'
 
@@ -36,7 +36,7 @@ const Blog: React.FC = () => {
       <div className={style.content}>
         {mdPath ?
           <div className={style.mdContent}>
-            <MdReader mdPath={mdPath} showContent={true} />
+            <MdReader filePath={mdPath} showContent={true} />
           </div>
           :
           <div className={style.blankContent}>

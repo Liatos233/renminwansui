@@ -127,3 +127,27 @@ function foo() {}
 14. Tabnine
 
 - AI 工具
+
+15. Path Intellisense
+
+- 路径补全
+
+16. Image preview
+
+- 图片预览
+
+17. Color Identifiers
+
+- Syntax highlighter that gives each identifier a different color
+
+18. Code Spell Checker
+
+- A basic spell checker that works well with code and documents.
+
+19. Anyrule
+
+- 常用正则大全
+
+20. regex previewer
+
+- 正则校验测试

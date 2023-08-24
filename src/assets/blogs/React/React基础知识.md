@@ -404,3 +404,17 @@ const mapDispatchToProps = (dispatch) => {
 // 指定了从存储中获取状态的mapStateToProps函数以及分发Action的mapDispatchToProps函数。
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
 ```
+
+### 6.8 哪些事件会触发页面重新渲染
+
+- State 的变化：当组件的状态通过 useState 或 useReducer 等 Hook 发生变化时，组件会重新渲染。
+
+- Props 的变化： 父组件传递给子组件的属性（props）发生变化时，子组件会重新渲染。
+
+- Context 的变化： 当使用 useContext 连接到的上下文中的数据发生变化时，使用该上下文的组件会重新渲染。
+
+- `forceUpdate` 方法： 使用组件的 forceUpdate 方法会强制组件重新渲染，无视其状态和属性是否发生变化。
+
+- 使用 useEffect/useLayoutEffect： useEffect 中的副作用函数可能会触发页面重新渲染，特别是在使用了依赖数组的情况下，当依赖项发生变化时，副作用函数会被重新调用。
+
+- render 方法调用： 在父组件重新渲染时，会导致其所有子组件的 render 方法被调用，从而可能触发子组件的重新渲染。

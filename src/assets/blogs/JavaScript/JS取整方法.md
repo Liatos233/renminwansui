@@ -42,3 +42,12 @@ const precisionNum2 = num2.toPrecision(3);
 console.log(precisionNum1); // "1.23e+3"
 console.log(precisionNum2); // "0.00123"
 ```
+
+6. trunc() ：将数字的小数部分去掉，只保留整数部分
+
+```js
+Math.trunc(42.84); // 42
+Math.trunc(-0.123); // -0
+Math.trunc("-1.123"); // -1
+Math.trunc("foo"); // NaN
+```

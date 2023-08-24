@@ -10,9 +10,10 @@ import ReadBook from "@/views/readBook/ReadBook";
 import Vision from "@/views/vision/Vision";
 import VisionHome from "./../views/vision/visionHome/VisionHome";
 import SolarSystem from "@/components/plants/SolarSystem";
-import BookCarousel from "@/components/bookCarousel/bookCarousel";
+import BookCarousel from "@/components/bookCarousel/BookCarousel";
 import Plants from "@/components/plants/Plants";
 import Window from "@/views/window/Window";
+import MusicPlayer from "@/views/musicPlayer/MusicPlayer";
 
 export const routerConfig = [
   {
@@ -68,6 +69,10 @@ export const routerConfig = [
       {
         path: "window",
         element: <Window />,
+      },
+      {
+        path: "musicPlayer",
+        element: <MusicPlayer />,
       },
       {
         path: "*",

@@ -20,7 +20,7 @@ import style from './mdReader.module.less'
 // TODO 目录添加anchor https://blog.csdn.net/Sakuraaaa_/article/details/128400497
 
 type Props = {
-  mdPath: string;
+  filePath: string;
   showContent: boolean;
 }
 
@@ -49,7 +49,7 @@ const MdReader: React.FC<Props> = (props: Props) => {
   useEffect(() => {
     // 读取md的内容
     // console.log('props.mdPath', props.mdPath);
-    fetchMarkdown(props.mdPath);
+    fetchMarkdown(props.filePath);
   }, [props]);
 
   return (

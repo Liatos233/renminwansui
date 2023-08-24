@@ -11,6 +11,7 @@ const VisionHome: React.FC = () => {
         <Card hoverable className={style.cardItem}><Link to="/vision/solarSystem">Solar System</Link></Card>
         <Card hoverable className={style.cardItem}><Link to="/vision/bookCarousel">BookCarousel</Link></Card>
         <Card hoverable className={style.cardItem}><Link to="/window">Window</Link></Card>
+        <Card hoverable className={style.cardItem}><Link to="/musicPlayer">musicPlayer</Link></Card>
       </div>
     </div>
   );

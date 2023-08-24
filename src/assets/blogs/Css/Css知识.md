@@ -1,7 +1,7 @@
 #### 1 样式优先级
 
 1. !important 优先级最高，无论其位置在哪里
-2. 内联样式(Embedded styles)：即直接在 HTML 元素的 style 属性中定义的样式。
+2. 内联样式(Embedded styles)：即直接在 HTML 元素的 style 属性中定义的样式
 3. 内部样式(Internal styles)：即在 HTML 中使用 `<style>` 标签定义的样式，通常位于 `<head>` 部分
 4. 外部样式表（External stylesheets）：单独的 .css 文件中定义的样式
 
@@ -15,20 +15,20 @@
 
 - 用于对处于特定状态的元素进行选择
 - `:`开头
-  - :hover - 鼠标悬停在元素上时应用样式。
-  - :active - 元素被点击并保持激活状态时应用样式。
-  - :focus - 元素获得焦点时应用样式（通常用于表单元素）。
-  - :checked - 应用于被选中的复选框或单选按钮。
-  - :nth-child(n) - 选择在其父元素中为第 n 个子元素的元素（n 可以是数字、关键词或表达式）。
+  - :hover - 鼠标悬停在元素上时应用样式
+  - :active - 元素被点击并保持激活状态时应用样式
+  - :focus - 元素获得焦点时应用样式（通常用于表单元素）
+  - :checked - 应用于被选中的复选框或单选按钮
+  - :nth-child(n) - 选择在其父元素中为第 n 个子元素的元素（n 可以是数字、关键词或表达式）
 
 ##### 伪元素 Pseudo Element
 
 - 用于在元素的特定部分上应用样式，比如在元素的内容前面或后面插入一些额外的样式
 - `::`开头
-  - ::before - 在元素内容之前插入样式。
-  - ::after - 在元素内容之后插入样式。
-  - ::first-line - 应用于元素的第一行文本。
-  - ::first-letter - 应用于元素的第一个字母。
+  - ::before - 在元素内容之前插入样式
+  - ::after - 在元素内容之后插入样式
+  - ::first-line - 应用于元素的第一行文本
+  - ::first-letter - 应用于元素的第一个字母
 
 #### 3 斜体
 
@@ -56,10 +56,10 @@
 
 - `LVHA` 推荐按照该顺序编写样式
 
-  - L（Layout）：布局选择器，用于设置盒模型、位置和布局相关的属性。这包括设置宽度、高度、边距、内边距、浮动、定位等。
-  - V（Visualization）：这些样式用于设置元素的外观、颜色、字体样式、边框等视觉效果。
-  - H（Hierarchy）：这些样式用于设置元素之间的层级关系，例如层级 z-index 等。
-  - A（Animation）：这些样式用于添加元素的动画效果，例如过渡 transition、变换 transform、关键帧动画 @keyframes 等。
+  - L（Layout）：布局选择器，用于设置盒模型、位置和布局相关的属性这包括设置宽度、高度、边距、内边距、浮动、定位等
+  - V（Visualization）：这些样式用于设置元素的外观、颜色、字体样式、边框等视觉效果
+  - H（Hierarchy）：这些样式用于设置元素之间的层级关系，例如层级 z-index 等
+  - A（Animation）：这些样式用于添加元素的动画效果，例如过渡 transition、变换 transform、关键帧动画 @keyframes 等
 
 #### 6 列表
 
@@ -78,8 +78,8 @@ ol.d {
 }
 ```
 
-- list-style-image 将图像设置为列表项标志。
-- list-style-position 设置列表中列表项标志的位置。
+- list-style-image 将图像设置为列表项标志
+- list-style-position 设置列表中列表项标志的位置
 
 #### 7 轮廓（outline）
 
@@ -88,11 +88,18 @@ ol.d {
 
 #### 8 定位（Position）
 
-- static（静态定位）：默认值。按照正常的文档流进行布局，不会受到 top、right、bottom、left 等影响。
-- relative（相对定位）：相对定位使元素相对于其正常位置进行定位。通过使用 top、right、bottom、left 等可将元素相对于其原始位置进行偏移，`但它原本所占的空间不会改变`。
-- absolute（绝对定位）：绝对定位使元素脱离文档流，相对于其最近的`具有定位属性（非 static）的父元素`进行定位。
-- fixed（固定定位）：固定定位使元素脱离文档流，并相对于浏览器窗口进行定位，即使页面滚动，元素位置也保持不变。
+- static（静态定位）：默认值按照正常的文档流进行布局，不会受到 top、right、bottom、left 等影响
+- relative（相对定位）：相对定位使元素相对于其正常位置进行定位通过使用 top、right、bottom、left 等可将元素相对于其原始位置进行偏移，`但它原本所占的空间不会改变`
+- absolute（绝对定位）：绝对定位使元素脱离文档流，相对于其最近的`具有定位属性（非 static）的父元素`进行定位
+- fixed（固定定位）：固定定位使元素脱离文档流，并相对于浏览器窗口进行定位，即使页面滚动，元素位置也保持不变
 - sticky（粘性定位）：跨越特定阈值前为 relative，之后为 fixed（需要指定 top、right、bottom、left）
+
+**包含块**
+
+1. 根元素（很多场景下可以看成是<html>）被称为“初始包含块”，其尺寸等同于浏览器可视窗口的大小
+2. 对于其他元素，如果该元素的 position 是 relative 或者 static，则“包含块”由其最近的块容器祖先盒的 content box 边界形成
+3. 如果元素 position:absolute，则“包含块”由最近的 position 不为 static 的祖先元素建立
+4. 如果元素 position:fixed，则“包含块”是“初始包含块”
 
 #### 9 组合选择符
 
@@ -182,7 +189,7 @@ transition: property duration timing-function delay;
 
 - property：all、width、height、color、transform...
 - duration：持续时间，s、ms
-- timing-function：时间函数(optional)。linear（线性变化）、- ease（慢进快出，默认值）、ease-in（慢进）、ease-out（快- 出）等
+- timing-function：时间函数(optional)linear（线性变化）、- ease（慢进快出，默认值）、ease-in（慢进）、ease-out（快- 出）等
 - delay：开始前的延迟时间(optional)，s、ms
 
 ##### animation 动画
@@ -214,7 +221,7 @@ div {
 
 ##### resize
 
-- 规定用户可以通过拉伸元素尺寸来显示溢出隐藏的内容。效果类似 `<textarea></textarea>` 文本域标签。
+- 规定用户可以通过拉伸元素尺寸来显示溢出隐藏的内容效果类似 `<textarea></textarea>` 文本域标签
 
 ##### grid
 
@@ -227,3 +234,32 @@ grid-gap: 50px 100px;
 justify-content: space-evenly;
 align-content: center;
 ```
+
+##### aspect-ratio
+
+- 指定一个元素的宽高比
+
+```css
+/* padding-top  比较Hack的方式 */
+.container {
+  width: 100%;
+  padding-top: 56.25%;
+}
+
+/* aspect-ratio */
+.container {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+```
+
+##### object-fit
+
+- 指定 Block 中的元素的填充模式
+  - cover：背景图像覆盖整个 Block 并保持宽高比
+  - contain：背景图像完全填充 Block 并保持宽高比且添加黑边
+  - fill：背景图像完全填充 Block 并可以拉伸
+
+##### z-index
+
+![z-index](https://imgur.com/Fo401py.png)
