@@ -1,20 +1,13 @@
 #### 概述
 
-- 在 JavaScript 中，类继承的原理是基于原型链的机制。每个对象都有一个内部属性`[[Prototype]]`（可以通过`__proto__`访问），它指向该对象的原型对象（也称为原型）。
+- 在 JavaScript 中，类继承的原理是基于原型链的机制。每个对象都有一个内部属性`[[Prototype]]`（可以通过`__proto__`访问），它指向该对象的构造函数的显式原型对象。
 
 - 原型对象本身也是一个对象，它有自己的`[[Prototype]]`，形成了一个链式结构，即原型链。原型链的顶端是`Object.prototype`，它是所有对象的默认原型。
 
-- 当访问一个对象的属性或方法时，JavaScript 引擎首先在对象本身查找，如果找不到，则会沿着原型链向上查找，直到找到对应的属性或方法或者到达原型链的顶端（即`Object.prototype`）。这样就实现了属性和方法的继承。
-
 #### 类继承实现
 
-1. 定义父类（构造函数）：通过一个函数来定义父类，该函数作为类的构造函数。父类的属性和方法可以在构造函数内部使用`this`关键字定义。
-2. 定义子类（构造函数）：通过一个函数来定义子类，同样作为类的构造函数。子类通常会调用父类的构造函数来继承父类的属性，使用`ParentClass.call(this, ...args)`来实现属性继承。
-3. 建立原型链：使用`ChildClass.prototype = Object.create(ParentClass.prototype)`将子类的原型对象指向父类的实例，建立原型链关系。这样子类就可以继承父类原型上的属性和方法。
-4. 定义子类自己的方法：在子类的原型上定义子类自己的方法，这些方法只在子类实例上可用，不影响父类和其他子类的实例。
-
 ```javascript
-// 1. 定义父类
+// 1. 定义父类（构造函数）
 function Animal(name) {
   this.name = name;
 }
@@ -23,14 +16,16 @@ Animal.prototype.sayName = function () {
   console.log("My name is " + this.name);
 };
 
-// 3. 定义子类
+// 3. 定义子类（构造函数）
 function Dog(name, breed) {
+  // 父类属性的继承 类似于 super()
   Animal.call(this, name);
+  // 子类自己的属性
   this.breed = breed;
 }
 
 // 4. 建立原型链关系
-Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype = Object.create(Animal.prototype); // Dog.prototype.__proto__ = Animal.prototype; //同样可以，但是存在兼容性问题
 Dog.prototype.constructor = Dog; // 修复子类的constructor指向
 
 // 5. 在子类的原型上定义自己的方法
@@ -62,3 +57,32 @@ Note：
 2. Object 的原型对象是原型链的尽头
 3. 读取对象的属性值时：自动到原型链中查找
 4. 设置对象的属性值时：不会查找原型链，如果没有则直接添加
+
+#### 实现一个 instanceof
+
+```js
+// 传入两个参数为：对象实例、构造函数
+function myInstanceOf(obj, constructor) {
+  // 检查参数是否是函数（构造函数）
+  if (typeof constructor !== "function") {
+    throw new Error("Right-hand side of instanceof is not callable");
+  }
+
+  // 判断 obj 是否为 constructor 的实例
+  let prototype = constructor.prototype;
+  while (obj !== null) {
+    // 找到了对应原型
+    if (obj === prototype) {
+      return true;
+    }
+    // 继续在原型链上寻找原型
+    obj = obj.__proto__;
+  }
+  // 没有找到对应原型
+  return false;
+}
+
+let foo = { bar: 0 };
+console.log(myInstanceOf(foo, Object)); // true
+console.log(myInstanceOf(foo, Array)); // false
+```

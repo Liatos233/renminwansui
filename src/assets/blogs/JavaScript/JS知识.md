@@ -29,6 +29,7 @@ Math.abs(1 / 3 - (1 - 2 / 3)) < 0.0000001; // true
 - 禁止使用 with 语句
 
 ```js
+// es5新增
 "use strict";
 ```
 
@@ -36,6 +37,7 @@ Math.abs(1 / 3 - (1 - 2 / 3)) < 0.0000001; // true
 
 - ~~typeof~~ // 不可行 都是 object
   - typeof 数组/正则/对象/null(历史错误) 都为 object
+  - typeof 函数 为 function
 - Array.isArray()
 - instanceof 检查是否属于特定类或构造函数的运算符
 
@@ -48,7 +50,7 @@ Math.abs(1 / 3 - (1 - 2 / 3)) < 0.0000001; // true
 - constructor 访问对象的构造函数
 
 ```js
-foo.constructor; // Array/Object/Data/RegExp/...
+foo.constructor; // Array()/Object()/Data()/RegExp()/Function()...
 ```
 
 #### 5 函数
@@ -90,6 +92,90 @@ const bar = function (a, b) {};
 - 用于模块化、缓存、封装私有属性、防止全局变量污染等操作
 - 不再需要时，需要将引用置为 null，避免内存泄漏
 
-####
+#### 6 运算
 
-https://www.runoob.com/js/js-events.html
+##### i++和++i
+
+- `y = x++` 后置递增运算符 x 先赋值给 y，然后再加一
+- `y = ++x` 前置递增运算符 x 先加一，然后再赋值给 y
+
+##### % 取模
+
+- 取模运算的结果符号只与左边值的符号有关
+
+```js
+let x = 7 % 3; // 1
+let y = 7 % -3; // 1
+let z = -7 % 3; // -1
+```
+
+##### +
+
+- 不存在字符串时，均视为数字类型（bool 视为 0 或者 1、null 视为 0、undefined 视为 NaN）
+- 存在字符串时，均视为字符串类型（true、false、undefined、null、NaN 视为自身的字符串）
+
+##### -
+
+- 不会触发字符串拼接行为
+- 尝试将非数字类型转数字类型计算，如果失败则返回 NaN
+
+##### ,
+
+- 从左到右，逐个执行每个表达式，然后返回最后一个表达式的值。
+
+```js
+let a = 1,
+  b = 2,
+  c = 3;
+let num = (1, 2); // 2
+let newArr = arr.map((item) => (item.push(0), item));
+```
+
+##### void
+
+- 指定要计算一个表达式但是不返回值
+
+```js
+void 0; // undefined
+```
+
+- href="javascript:void(0)" 表示一个死链接
+
+```js
+<a href="javascript:void(0)" rel="nofollow">
+  死链接
+</a>
+```
+
+#### 7 比较
+
+##### `==`的比较规则
+
+1. 两端类型相同，比较值
+2. 两端存在 NaN，返回 false
+3. undefined 和 null 只有与自身比较，或者互相比较时，才会返回 true
+
+```js
+undefined == undefined; // true
+null == null; // true
+undefined == null; // true
+```
+
+4. 两端都是原始类型，转换成数字比较
+
+```js
+true == 1; // true
+"true" == 1; // false 相当于NaN == 1
+```
+
+5. 一端是原始类型，一端是对象类型，把对象转换成原始类型后进入
+
+> - 对象如何转原始类型：
+>
+> 1. 如果对象拥有[Symbol.toPrimitive]方法则调用，返回原始值或者抛出异常
+> 2. 调用对象的 valueof 方法，返回原始值或者进入下一步
+> 3. 调用对象的 tostring 方法，返回原始值或者抛出异常
+
+#### 8
+
+-

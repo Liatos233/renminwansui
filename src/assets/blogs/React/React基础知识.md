@@ -152,176 +152,34 @@ rfc -> react function component
 
 ## 6 react 要点
 
-### 6.1 state 完整格式
-
-```js
-construct(props) {
-    super(props)
-
-    this.state={
-
-    }
-}
-```
-
-### 6.2 jsx 使用方法的方式
-
-```js
-() => this.foo()
-this.foo.bind(this)
-this.foo() 自执行
-```
-
-### 6.3 函数式组件
-
-```js
-export default App = () => {};
-// 无生命周期
-// 无 this
-// 无 state
-```
-
-### 6.4 Hooks
-
-//（必须要在函数式组件的最顶层）
-
-- #### (1) useState
-
-```js
-const [foo, setFoo] = useState("aaa");
-```
-
-- #### useEffect
-
-```js
-// like ComponentDidMount and watch all parameter update
-useEffect(() => {});
-
-// only watch parameter foo update
-// use [] when don't want to watch any parameter
-useEffect(() => {}, [foo]);
-
-// simulate beforeDestroyed and process trash collection
-useEffect(() => {
-  return () => {
-    console.log("destroy period");
-  };
-});
-```
-
-- #### (2) useContext
-
-// useContext 可以帮助我们跨越组件层级直接传递变量，实现数据共享。Context 的作用就是对它所包含的组件树提供全局共享数据的一种技术
-
-```js
-// in grand father module
-import { createContext } from 'react'
-export const FooContext = createContext()
-
-return (
-    <Context.Provider value={ 这里放要传递的数据 }>
-        需要接收数据的后代组件
-    <Context.Provider />
-)
-```
-
-```js
-// in grand son module
-import { FooContext } from "";
-
-const 函数组件 = () => {
-  const 公共数据 = useContext(Context); // 这里的公共数据就是根组件 value 的值
-  return 函数组件的内容;
-};
-```
-
-- #### (3) memo
-
-// 使用 memo 包裹子组件 则父组件视图更新时子组件`不会随之更新`
-
-// 仅当包裹的子组件 return 的是静态元素时有效
-
-```js
-memo(() => {});
-```
-
-- #### (4) useCallback
-
-// setFoo(newValue) 使用新值覆盖初始值
-
-// setFoo((foo) => foo+1) 不断使用新值覆盖旧值
-
-// 使用后者的方式能够既缓存子组件又更新子组件的状态
-
-```js
-useCallback(() => {}, []);
-```
-
-- #### (5) 开发者自定义 hooks
-
-### 6.5 父子互传
-
-#### (1) 父传子
-
-props
-
-#### (2) 子传父
-
-父组件中将方法传入子组件
-
-子组件的调用 props 中传入的方法传参
-
-#### (3) context 跨级组件传值
-
-```js
-import {createContext} from 'react';
-
-// create context space Provider and Consumer
-const FooContext = createContext();
-// in top module
-<FooContent.Provider value={{foo, setFoo}} >
-    <Father />
-<FooContent.Provider>
-```
-
-```js
-// in father module
-const Father = () => <Child>
-```
-
-```js
-// in son module
-<FooContent.Consumer>
-    {({foo, setFoo}) => {console.log(foo}}
-<FooContent.Consumer >
-```
-
-### 6.6 受控组件和不受控组件（仅限表单元素）
-
-受控组件的 value 通过 state/useState 控制
-
-不受控组件可以给元素添加 ref，通过 ref/useRef 控制
-
-### 6.7 Redux
-
-#### (1) 流程图
+### 6.1 Redux 概念
 
 ![架构](https://i.imgur.com/IfDeyZ0.gif)
 
-> View ：负责显示逻辑，与 MVC 中的 View 类似。它相应用户的操作（点击、输入等事件），生成 Action，通过 Dispatcher 进行派发。
+#### View
 
-> Actions：用户通过 View 触发的操作被封装成的对象。它必须包含一个`type`字段。Action 会经由 Dispatcher 派发给 Reducer。使用统一的"type"字段来标识 Action 的类型，并确保唯一性，通常使用 `FOO_BAR` 的方式命名。
+- 负责显示逻辑，与 MVC 中的 View 类似。它相应用户的操作（点击、输入等事件），生成 Action，通过 Dispatcher 进行派发。
 
-> Dispatcher：Redux 框架提供的 Action 派发器。当一个动作被分发时，Redux 会将该动作传递给对应的 Reducer 函数。。
+#### Actions
 
-> Store：应用程序的状态容器，通常以树状结构的形式存在。一个 View 中的一个组件通常与 Store 中的某个节点对应。当 Store 中的状态发生变化时，Redux 框架能够高效地`只更新与变化数据相关的 View` 组件，从而提高应用程序的性能。Store 的更新只能通过触发 Action 来实现，这种方式使状态的变化变得可预测，易于理解和维护。
+- 用户通过 View 触发的操作被封装成的对象。它必须包含一个`type`字段。Action 会经由 Dispatcher 派发给 Reducer。使用统一的"type"字段来标识 Action 的类型，并确保唯一性，通常使用 `FOO_BAR` 的方式命名。
 
-> Reducer：类似于 map-reduce 中的归纳器，它是一个纯函数，用于响应处理 Action。根据动作的类型，Reducer 会对接收到的状态进行相应的处理，然后返回一个新的状态。
+#### Dispatcher
 
-#### (2) 实际使用
+- Redux 框架提供的 Action 派发器。当一个动作被分发时，Redux 会将该动作传递给对应的 Reducer 函数。。
 
-```js
-// 仓库创建 store/index.js
+#### Store
+
+- 应用程序的状态容器，通常以树状结构的形式存在。一个 View 中的一个组件通常与 Store 中的某个节点对应。当 Store 中的状态发生变化时，Redux 框架能够高效地`只更新与变化数据相关的 View` 组件，从而提高应用程序的性能。Store 的更新只能通过触发 Action 来实现，这种方式使状态的变化变得可预测，易于理解和维护。
+
+#### Reducer
+
+- 类似于 map-reduce 中的归纳器，它是一个纯函数，用于响应处理 Action。根据动作的类型，Reducer 会对接收到的状态进行相应的处理，然后返回一个新的状态。
+
+#### 6.2 Redux 实际使用
+
+```js store/index.js
+// 仓库创建
 import reducer form './reducer.js';
 import {createStore} from 'redux';
 
@@ -329,8 +187,8 @@ const store = createStore(reducer);
 export default store;
 ```
 
-```js
-// 创建初始状态和Reducer 并导出函数 store/reducer.js
+```js store/reducer.js
+// 创建初始状态和Reducer并导出函数
 const defaultState = {
   counter: 1,
 };
@@ -404,17 +262,3 @@ const mapDispatchToProps = (dispatch) => {
 // 指定了从存储中获取状态的mapStateToProps函数以及分发Action的mapDispatchToProps函数。
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
 ```
-
-### 6.8 哪些事件会触发页面重新渲染
-
-- State 的变化：当组件的状态通过 useState 或 useReducer 等 Hook 发生变化时，组件会重新渲染。
-
-- Props 的变化： 父组件传递给子组件的属性（props）发生变化时，子组件会重新渲染。
-
-- Context 的变化： 当使用 useContext 连接到的上下文中的数据发生变化时，使用该上下文的组件会重新渲染。
-
-- `forceUpdate` 方法： 使用组件的 forceUpdate 方法会强制组件重新渲染，无视其状态和属性是否发生变化。
-
-- 使用 useEffect/useLayoutEffect： useEffect 中的副作用函数可能会触发页面重新渲染，特别是在使用了依赖数组的情况下，当依赖项发生变化时，副作用函数会被重新调用。
-
-- render 方法调用： 在父组件重新渲染时，会导致其所有子组件的 render 方法被调用，从而可能触发子组件的重新渲染。

@@ -7,12 +7,13 @@
 - 可以监控请求进度
 - 会在出现错误时 reject
 - 可以设置响应类型（text、json、blob 等）
--
+- 将整个响应读入内存缓冲区
 
 #### Fetch
 
-- ES6 新增的基于 Promise 的 Ajax 请求 API
+- ES6 新增的基于 Promise 的 Ajax(Asynchronous JavaScript and XML) 请求 API
 - 默认不会发送 cookie 除非设置 credentials
 - 不能监控请求进度
 - 只会在网络错误时 reject Promise，其他错误都会被视为成功的响应，需要手动判断
 - 需要手动解析响应
+- 可以流式传输请求和响应数据

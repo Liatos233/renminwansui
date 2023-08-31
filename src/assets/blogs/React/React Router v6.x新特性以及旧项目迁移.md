@@ -45,18 +45,22 @@ import Profile from './Profile';
 
 - 路径层次更清晰 Redirect 组件的废弃
 - 添加 Outlet：相当于 vue 的 router-view 组件 用于显示子路由页面
-- 有嵌套路由的 path 需要加 /\*
+- 有嵌套路由的 path 需要加 `/*`
 
 ```js
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import LayoutIndex from "../layout";
 import Home from "../pages/home/index";
 import Test1 from "../pages/test1";
+const MyComponent = React.lazy(() => import("./MyComponent"));
 
 const RouterFun = () => {
   return (
     <Router>
       {/* 使用lazy异步加载组件后，需要配合使用Suspense组件包裹。fallback可以为loading，为异步包裹的内容 */}
+      <Suspense fallback={<div>Loading...</div>}>
+        <MyComponent />
+      </Suspense>
       {/* 需要该组件路由才能显示 */}
       <Routes>
         <Route path="/*" element={<LayoutIndex />}>

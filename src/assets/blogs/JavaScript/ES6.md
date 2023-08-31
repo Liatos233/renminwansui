@@ -87,9 +87,7 @@ JavaScript 运行在不同的环境中，相应的顶层对象不统一；
 
 ```js
 Browser -\> window/self
-
 Web Worker -\> self
-
 Node -\> global
 ```
 
