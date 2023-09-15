@@ -113,3 +113,42 @@ function reactify(o, vm) {
 - `父子组件间通信`：当父组件向子组件传递属性（props）发生变化时，子组件可能会触发重新渲染
 - `使用 $forceUpdate 方法`：调用组件实例的 $forceUpdate 方法会强制组件重新渲染
 - `使用 $nextTick 方法`：调用组件实例的 $nextTick 方法可以在 DOM 更新之后执行回调函数，这时组件已经重新渲染
+
+## 4 EventBus
+
+```js
+class MyEventBus {
+  constructor() {
+    // 存储所有事件对应的回调的对应关系
+    /**
+     * key : [ callback, callback ]
+     */
+    this.items = {};
+  }
+
+  // 监听
+  $on(eventName, callback) {
+    // 没找到 则置为空
+    if (!this.items[eventName]) {
+      //一个事件可能有多个监听者
+      this.items[eventName] = [];
+    }
+    // 将callback函数放入
+    this.items[eventName].push(callback);
+  }
+
+  // 触发监听
+  $emit(eventName, ...args) {
+    // 没找到 直接return
+    if (!this.items[eventName]) return;
+    // 遍历列表 执行回调
+    this.items[eventName].forEach((ca) => ca(...args));
+  }
+
+  // 去掉监听
+  $off(eventName) {
+    this.items[eventName] = [];
+  }
+}
+export default new MyEventBus();
+```

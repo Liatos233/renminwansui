@@ -49,5 +49,5 @@ Chrome 等浏览器会开启一个`死循环`，每次循环从消息队列中�
 
 #### 6 微任务和宏任务
 
-- 微任务（microtask）`Promise、process.nextTick 和 MutationObserver 等`
-- 宏任务（macrotask）`setTimeout、setInterval、 requestAnimationframe和 XHR等`
+- 微任务（microtask）`Promise、MutationObserver 和 process.nextTick 等`
+- 宏任务（macrotask）`setTimeout、setInterval、 requestAnimationframe、requestIdlecallback和 XHR等`

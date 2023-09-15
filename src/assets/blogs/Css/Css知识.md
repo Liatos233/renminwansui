@@ -158,7 +158,53 @@ ol.d {
 }
 ```
 
-#### 15 CSS3
+#### 15 css 文本超出隐藏显示三个点
+
+1. 行文本
+
+```css
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+```
+
+2. 多行文本
+
+```css
+text-overflow: -o-ellipsis-lastline;
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 3;
+line-clamp: 3;
+-webkit-box-orient: vertical;
+```
+
+#### 16 Content-Type
+
+- HTTP 请求头部字段，用于指示请求中的数据类型
+
+##### application/x-www-form-urlencoded：
+
+- 默认值，常用于发送表单数据请求主体会被编码为 key1=value1&key2=value2 的形式，以 & 符号分隔键值对
+
+##### multipart/form-data：
+
+- 用于上传文件或二进制数据这个类型通常用于表单上传文件，请求主体的格式会稍有不同，以边界标识分隔不同部分
+
+##### application/json：
+
+- 用于发送 JSON 数据请求主体中的数据应该是 JSON 格式的字符串
+
+##### text/plain：
+
+- 用于发送纯文本数据
+
+##### application/xml：
+
+- 用于发送 XML 数据
+
+#### 17 CSS3
 
 ##### box-shadow
 

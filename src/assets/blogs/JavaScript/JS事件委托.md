@@ -3,6 +3,9 @@
 - JavaScript 事件委托也称为`事件代理`。它利用`事件冒泡`的特性，将事件处理程序绑定到一个父元素上，以处理其子元素触发的事件。通过事件委托，我们可以避免给每个子元素都绑定事件处理程序，从而减少内存占用和提高性能。
 
   > `事件冒泡`：当子元素上触发了一个事件（如点击事件），该事件会向上冒泡，直到到达其`父元素或更外层的祖先元素`。
+  > `click、mousedown、mouseup、keydown、keyup、keypress`事件会冒泡
+  > `scroll、blur、focus、mouseleave、mouseenter、Media系列` 事件不会冒泡
+  > 妈（mouseenter）妈(mouseleave)不(blur)放(focus)心你(load,unload,resize)
 
 - 事件委托的优势：
   - 适用于动态添加或删除子元素的情况，因为无论子元素何时添加或删除，只要它们是元素的子元素，它们就会自动继承相同的事件处理逻辑。

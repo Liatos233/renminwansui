@@ -86,6 +86,8 @@ const bar = function (a, b) {};
 
 ##### 闭包
 
+- 闭包是`函数和其词法作用域的组合`，允许函数`捕获和保留`其外部作用域中的变量，即使外部函数已经执行完毕，是`函数与其外部作用域之间的连接`，形成了一个`封闭的作用域`
+
 1. 函数 A 将函数 B 返回出来
 2. 调用返回出来的函数 B
 
@@ -153,7 +155,7 @@ void 0; // undefined
 
 1. 两端类型相同，比较值
 2. 两端存在 NaN，返回 false
-3. undefined 和 null 只有与自身比较，或者互相比较时，才会返回 true
+3. undefined 和 null 只有与自身比较或者互相比较时，才会返回 true
 
 ```js
 undefined == undefined; // true
@@ -176,6 +178,49 @@ true == 1; // true
 > 2. 调用对象的 valueof 方法，返回原始值或者进入下一步
 > 3. 调用对象的 tostring 方法，返回原始值或者抛出异常
 
-#### 8
+#### 8 类型转化
 
--
+1. Number()
+   - undefind -> NaN
+   - Symbol -> Throw a TypeError exception
+   - Object -> 先调用 toPrimitive，后调用 toNumber
+   - [1, 2, 3] -> NaN
+   - [1] -> 1
+2. parseInt(str, scale)
+   - 按照指定进制解析
+3. parseFloat(str)
+   - 按照十进制解析
+4. String()
+   - Symbol -> Throw a TypeError exception
+   - Object -> 先调用 toPrimitive，后调用 toString
+   - [1, 2, 3] -> "1,2,3"
+   - [1] -> "1"
+5. Boolean()
+   - undefined、null、false 、+0 、-0 、0、NaN 、 "" -> false
+
+#### 9 浅拷贝和深拷贝
+
+- 浅拷贝：指的是创建新的数据，这个数据有着原始数据属性值的一份精确拷贝；原始类型拷贝值，对象类型拷贝地址
+- 深拷贝：开辟一个新的栈，两个对象属完成相同，指向的内存空间不同，互不影响
+
+```js
+function deepClone(obj, hash = new WeakMap()) {
+  if (obj === null) return obj; // 如果是null或者undefined我就不进行拷贝操作
+  if (obj instanceof Date) return new Date(obj);
+  if (obj instanceof RegExp) return new RegExp(obj);
+  // 如果不是对象类型 则不需要深拷贝
+  if (typeof obj !== "object") return obj;
+  // 是对象的话就要进行深拷贝
+  if (hash.get(obj)) return hash.get(obj);
+  let cloneObj = new obj.constructor();
+  // 找到的是所属类原型上的constructor,而原型上的 constructor指向的是当前类本身
+  hash.set(obj, cloneObj);
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      // 实现一个递归拷贝
+      cloneObj[key] = deepClone(obj[key], hash);
+    }
+  }
+  return cloneObj;
+}
+```

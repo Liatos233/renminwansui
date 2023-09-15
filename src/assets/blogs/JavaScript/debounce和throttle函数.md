@@ -16,6 +16,7 @@ function debounce(func, interval) {
       clearTimeout(timer);
     }
 
+    // 重新计时
     timer = setTimeout(() => {
       func.apply(this, args);
     }, delay);
